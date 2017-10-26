@@ -1,0 +1,79 @@
+.main-nav {
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid $light-gray;
+  align-items: center;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  margin-bottom: 10px;
+}
+
+.left-nav > ul > li {
+  display: inline-block;
+
+}
+
+.right-nav > ul > li {
+  display: inline-block;
+}
+
+.right-nav > ul > li:last-of-type {
+
+}
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+
+}
+
+.left-nav span {
+  font-weight: bold;
+  font-family: $sans-serif;
+  margin-left: 10px;
+}
+
+
+.right-nav i {
+  background-color: $lightest-gray;
+  padding-left: 10px;
+  padding-bottom: 9px;
+  padding-top: 6px;
+  padding-right: 10px;
+  border-radius: 4px;
+  font-size: 15px
+}
+
+#search-modal-btn {
+  background-color: $lightest-gray;
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin-left: 20px;
+}
+
+#sections-sidebar-btn {
+  margin-left: 20px;
+  padding: 5px 12px;
+}
+#sections-sidebar-btn:hover {
+  background-color: $light-gray;
+}
+
+#search-modal-btn:hover {
+  background-color: $light-gray;
+}
+
+.log-in-button {
+  background-color: $light-blue;
+  padding: 8px;
+}
+.subscribe-button {
+  background-color: $blue;
+  padding: 8px;
+
+}
+#gear-dropdown {
+  background-color: none;
+}

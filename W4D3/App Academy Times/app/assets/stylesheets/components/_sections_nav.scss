@@ -1,0 +1,26 @@
+.sections {
+  display: flex;
+  border-bottom: 1px solid $light-gray;
+  padding: 10px 10px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sections li {
+  margin-left: 20px;
+  font-family: $sans-serif;
+}
+
+.sections li a {
+  text-decoration: none;
+  padding: 2px;
+}
+.sections li a:hover {
+  background-color: $light-gray;
+}
+
+#a-all {
+  text-decoration: underline;
+  font-family: courier;
+}

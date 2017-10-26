@@ -1,0 +1,80 @@
+.main-text {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.list-bullets {
+  list-style-type: disc;
+}
+
+.comments {
+  color: $blue;
+  font-family: courier;
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+.three-divs {
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.launching {
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  margin-bottom: 3px;
+}
+
+.the-by-tag {
+  font-family: $sans-serif;
+  color: $gray;
+  font-size: 11px;
+  padding-bottom: 5px;
+}
+
+.far-left {
+  margin-left: 15px;
+  font-family: $serif;
+}
+
+.video {
+  margin-bottom: 15px;
+}
+
+.warning {
+  padding-bottom: 10px;
+}
+
+.mid-section {
+  border-top: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+}
+
+.mid-section-p {
+  padding-bottom: 10px;
+}
+
+.main-text h3 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.right-side {
+  display: inline-block;
+}
+
+.opinion-pages h3 {
+  text-align: center;
+}
+
+.bullet-pads {
+  padding-left: 15px;
+  font-weight: bold;
+}
+
+.bullet-pads li {
+  padding-top: 5px;
+}
