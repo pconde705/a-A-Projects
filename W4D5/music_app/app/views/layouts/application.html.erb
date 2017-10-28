@@ -9,6 +9,24 @@
   </head>
 
   <body>
+    <div class="top-buttons">
+      <% if logged_in? %>
+      <%= button_to "Log Out", session_url, method: :delete, class: 'log-out-button' %>
+      <% else %>
+      <%= button_to "Sign Up", new_user_url, method: :get, class: 'sign-up-button' %>
+      <%= button_to "Log In", new_session_url, method: :get, class: 'log-in-button' %>
+      <% end %>
+    </div>
+    <br>
+    <br>
+    <% if flash[:errors] %>
+    <h3>Errors:</h3>
+      <% flash[:errors].each do |error| %>
+        <ul>
+          <li><%= error %></li>
+        </ul>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,12 @@
+<h2>Spot any of your Favorite Bands?</h2>
+
+<%= link_to "Create Band", new_band_url, method: :get %>
+
+<% @bands.each do |band| %>
+  <ul>
+    <li><h3><%= band.name %></h3></li>
+      <%= link_to 'Band Page', band_url(band), method: :get %>
+      <%= link_to 'Destroy Band', band_url(band), method: :delete %>
+  </ul>
+  <br>
+<% end %>

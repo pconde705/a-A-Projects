@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+
+.top-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-in-button {
+  font-size: 20px;
+  background-color: #caffc4;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.sign-up-button {
+  font-size: 20px;
+  background-color: #bbf2f7;
+  border-radius: 8px;
+}
+
+.log-out-button {
+  font-size: 20px;
+  background-color: #bbf2f7;
+  border-radius: 8px;
+  font-weight: bold;
+}
