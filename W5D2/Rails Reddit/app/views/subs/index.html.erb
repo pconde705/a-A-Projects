@@ -1,0 +1,16 @@
+<h1>Reddit Clone</h1>
+<h4>Patrick Conde Edition</h4>
+
+<%= link_to "Create New Sub", new_sub_url %>
+
+<div class="">
+
+  <h3>Subs:</h3>
+  <% @subs.each do |sub| %>
+  <ul>
+    <li>
+        <%= sub.id %>: <%= link_to sub.title, sub_url(sub) %>
+    </li>
+  </ul>
+  <% end %>
+</div>
