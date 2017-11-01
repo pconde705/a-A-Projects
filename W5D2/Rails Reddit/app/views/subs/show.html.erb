@@ -9,7 +9,7 @@
 <% @sub.posts.each do |post| %>
   <ul>
     <li>
-      <%= post.id %>: <%= post.title %>
+      <%= post.id %>: <%= link_to post.title, post_url(post) %>
 
     </li>
   </ul>

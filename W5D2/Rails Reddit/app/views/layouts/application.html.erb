@@ -9,8 +9,9 @@
   </head>
 
   <body>
+    <%= link_to "Home Page", subs_url %>
+    <br><br>
     <% if logged_in? %>
-      <%= link_to "Home Page", subs_url %>
       <br>
       <br>
       Current User: <%= current_user.username %>

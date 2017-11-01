@@ -11,6 +11,7 @@
 
 class PostSub < ApplicationRecord
   validates :post, :sub, presence: true
+  # Always validate the association names, rather than the ids themselves
   belongs_to :post
   belongs_to :sub
 end

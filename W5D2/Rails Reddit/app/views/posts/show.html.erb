@@ -1,2 +1,9 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1><%= @post.title %> by <%= @post.user.username %></h1>
+
+<% @post.subs.each do |subber| %>
+<ul>
+  <li>
+    <%= link_to subber.title, sub_url(subber) %>
+  </li>
+</ul>
+<% end %>

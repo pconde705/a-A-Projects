@@ -1,2 +1,31 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1>Edit Post</h1>
+
+<form class="" action="<%= posts_url %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Title:
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+  </label>
+  <br>
+  <label>URL:
+    <input type="text" name="post[url]" value="<%= @post.url %>">
+  </label>
+  <br>
+
+  <label>Content:
+    <textarea name="post[content]" rows="4" cols="40"><%= @post.content %></textarea>
+  </label>
+  <br>
+
+  <% Sub.all.each do |subbing| %>
+  <ul>
+    <li>
+      <label>
+        <input type="checkbox" name="post[sub_ids][]" value="<%= subbing.id %>" <%= "checked" if @post.sub_ids.include?(subbing.id) %>><%= subbing.title %>
+      </label>
+    </li>
+  </ul>
+  <% end %>
+  <input type="submit" name="" value="Create New Post">
+</form>
