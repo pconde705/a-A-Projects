@@ -1,0 +1,22 @@
+/* PHASE 7: Online */
+.online {
+  background-color: limegreen;
+  color: white;
+  position: absolute;
+  top: 0;
+  transform: rotate(-45deg) translateY(-22px) translateX(-47px);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 3px;
+  padding: 5px;
+  text-align: center;
+  width: 150px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4)
+}
+
+.profile-picture {
+  overflow: hidden;
+  position: relative;
+  /* Always add a position relative, when declaring an absolute*/
+}
