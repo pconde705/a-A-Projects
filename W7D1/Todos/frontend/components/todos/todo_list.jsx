@@ -7,7 +7,7 @@ const TodoList = (props) => (
   <div>
     <ul>
       {props.todos.map((el, idx) => (
-        <TodoListItem key={idx} todo={el}/>
+        <TodoListItem key={idx} todo={el} removeTodo={props.removeTodo}/>
       ))}
       <TodoForm receiveTodo={props.receiveTodo}/>
     </ul>

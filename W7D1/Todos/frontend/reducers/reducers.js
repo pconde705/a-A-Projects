@@ -1,5 +1,6 @@
 import React from 'react';
-import { RECEIVE_TODOS, RECEIVE_TODO }  from '../actions';
+import { RECEIVE_TODOS, RECEIVE_TODO }  from '../components/actions/actions';
+import { REMOVE_TODO }  from '../components/actions/todo_actions';
 
 const initialState = {
   1: {
@@ -28,6 +29,14 @@ const todosReducer = (state = initialState, action) => {
     case RECEIVE_TODO:
       newState = Object.assign({}, state);
       newState[action.todo.id] = action.todo;
+      return newState;
+    case REMOVE_TODO:
+      Object.keys(state).forEach((el) => {
+        // debugger;
+        if (parseInt(el) !== action.todo) {
+          newState[el] = state[el];
+        }
+      });
       return newState;
     default:
       return state;
