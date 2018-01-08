@@ -121,12 +121,22 @@ class BinarySearchTree
     arr << step.value
     arr << step.parent.value
 
-    while arr.include?(step.value)
-      step = step.parent
+    step = up_the_ladder(step, arr)
+
+    arr << step.value
+    step = step.right
+    step = left_order(step)
+
+    arr << step.value
+    step = up_the_ladder(step, arr)
+    arr << step.value
+
+    until step.right.nil?
+      arr << step.right.value
+      step = step.right
     end
-    
-    p step.value
-    p arr
+
+    arr
   end
 
 
@@ -146,5 +156,11 @@ class BinarySearchTree
     step.right
   end
 
+  def up_the_ladder(step, arr)
+    while arr.include?(step.value)
+      step = step.parent
+    end
+    step
+  end
 
 end
