@@ -79,20 +79,72 @@ class BinarySearchTree
     step
   end
 
-  def depth(tree_node = @root)
+  def depth(tree_node = @root, count = 0)
     return 0 if tree_node.nil?
-    count = 0
-    
+    return 0 if tree_node.left.nil? && tree_node.right.nil?
+
+    step = tree_node
+    array = [step]
+    temp_arr = array
+
+    while array.length != 0
+      temp_arr.each do |child|
+        array = []
+        if child.left != nil
+          array << child.left
+        end
+        if child.right != nil
+          array << child.right
+        end
+      end
+      temp_arr = array
+      count += 1
+    end
+    count
   end
 
   def is_balanced?(tree_node = @root)
+    right_count = depth(tree_node.right)
+    left_count = depth(tree_node.left)
+    left_count == right_count
   end
 
   def in_order_traversal(tree_node = @root, arr = [])
+    step = tree_node
+
+    step = left_order(step)
+    arr << step.value
+    arr << step.parent.value
+    step = right_order(step)
+
+    step = left_order(step)
+    arr << step.value
+    arr << step.parent.value
+
+    while arr.include?(step.value)
+      step = step.parent
+    end
+    
+    p step.value
+    p arr
   end
 
 
   private
   # optional helper methods go here:
+  def left_order(step)
+    until step.left.nil?
+      step = step.left
+    end
+    step
+  end
+
+  def right_order(step)
+    until step.right != nil
+      step = step.parent
+    end
+    step.right
+  end
+
 
 end
