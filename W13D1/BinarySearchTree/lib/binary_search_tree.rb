@@ -64,7 +64,6 @@ class BinarySearchTree
   end
 
   def delete(value)
-    # p value
     # p @root
   end
 
