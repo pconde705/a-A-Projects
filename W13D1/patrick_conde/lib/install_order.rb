@@ -10,5 +10,12 @@
 
 
 def install_order(arr)
+  p arr
 
+  flatten_arr = arr.flatten
+  max_id = flatten_arr.sort[-1]
+  new_arr = []
+  (1..max_id).each do |ind|
+    new_arr = []
+  end
 end
