@@ -15,14 +15,17 @@ def topological_sort(vertices)
   until top.empty?
     current = top.pop
     sorted.push(current)
+    edges = current.out_edges.dup
+    # Store a reference of the edges, iterate over the references, and delete those, so as not to disrupt
+    # the element in your array
 
-    current.out_edges.each do |edge|
-      if edge.to_vertex.in_edges.empty?
+    edges.each do |edge|
+      if edge.to_vertex.in_edges.length <= 1
         top.push(edge.to_vertex)
       end
       edge.destroy!
     end
-    # p current
+
   end
   if vertices.length == sorted.length
     sorted
