@@ -4,16 +4,16 @@ class DynamicProgramming
     @blair_cache = {}
   end
 
-  def blair_nums(n)
+  def blair_nums(n, arr = [1, 2])
     return n if n <= 2
-    p n
-    arr = [1, 2]
-    find_odd = n - 1
-    odd = (1..find_odd*2).to_a.select { |e| e.odd? }[find_odd]
-    arr << odd
-    p arr
-    k = arr[-3..-1].reduce(:+)
-    p k
+    until arr.length == n
+      find_odd = arr.length
+      odds = (1..find_odd*3).to_a.select { |e| e.odd? }
+      k = arr[-2..-1].reduce(:+) + odds[find_odd - 1]
+      arr << k
+      blair_nums(n, arr)
+    end
+    arr[n - 1]
   end
 
   def frog_hops_bottom_up(n)
