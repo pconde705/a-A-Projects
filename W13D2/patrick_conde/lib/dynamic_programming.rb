@@ -5,7 +5,9 @@ class DynamicProgramming
   end
 
   def blair_nums(n)
-
+    return n if n <= 2
+    arr = [1, 2]
+    return blair_nums(n + , )
   end
 
   def frog_hops_bottom_up(n)
