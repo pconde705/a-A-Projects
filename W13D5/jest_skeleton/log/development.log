@@ -1,0 +1,82 @@
+Started GET "/" for 127.0.0.1 at 2018-01-11 13:36:40 -0800
+
+PG::ConnectionBad - FATAL:  database "bench_bnb_development" does not exist
+:
+
+Started POST "/__better_errors/12b3cbc164942b8b/variables" for 127.0.0.1 at 2018-01-11 13:36:41 -0800
+  [1m[35m (24.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (29.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6802361601607853190)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBenches (20170802005858)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (53.1ms)[0m  [1m[35mCREATE TABLE "benches" ("id" bigserial primary key, "description" character varying, "lat" float, "lng" float, "seating" integer DEFAULT 2 NOT NULL, "picture_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170802005858"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFavorites (20170802010041)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" bigserial primary key, "user_id" integer NOT NULL, "bench_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_user_id" ON "favorites"  ("user_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_favorites_on_bench_id" ON "favorites"  ("bench_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_favorites_on_bench_id_and_user_id" ON "favorites"  ("bench_id", "user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170802010041"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20170802010223)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "body" character varying DEFAULT '' NOT NULL, "rating" integer NOT NULL, "bench_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_bench_id" ON "reviews"  ("bench_id")[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170802010223"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20170802010308)
+  [1m[35m (5.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170802010308"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-01-11 21:37:15.925758"], ["updated_at", "2018-01-11 21:37:15.925758"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6802361601607853190)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[31mDELETE FROM "benches"[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "benches" ("description", "lat", "lng", "seating", "picture_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "alamo square, many dogs"], ["lat", 37.775769], ["lng", -122.43496], ["seating", 4], ["picture_url", "https://c2.staticflickr.com/4/3035/2309664044_486f5a0327_z.jpg?zz=1"], ["created_at", "2018-01-11 21:37:16.086892"], ["updated_at", "2018-01-11 21:37:16.086892"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "benches" ("description", "lat", "lng", "picture_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["description", "UN plaza, food truck access"], ["lat", 37.77976], ["lng", -122.41382], ["picture_url", "http://www.concretedecor.net/CD/assets/Image/archives/CD1405/1405i_Page_32_Image_0001_600.jpg"], ["created_at", "2018-01-11 21:37:16.090312"], ["updated_at", "2018-01-11 21:37:16.090312"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "benches" ("description", "lat", "lng", "seating", "picture_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Ocean Beach, gnarly breh"], ["lat", 37.769996], ["lng", -122.511281], ["seating", 3], ["picture_url", "http://marmaladeandmileposts.com/wp-content/uploads/2012/05/2012-4-16-San-Francisco-Road-Trip-San-Francisco-1301.jpg"], ["created_at", "2018-01-11 21:37:16.093042"], ["updated_at", "2018-01-11 21:37:16.093042"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lEaMIe1VRivH0qQF4A7Yww"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "guest"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "guest"], ["password_digest", "$2a$10$dL8clJoXHR/mR9CTV7.B2.wPjubYJUcDBHgBAkBqc7GCAU2VNl8LW"], ["session_token", "lEaMIe1VRivH0qQF4A7Yww"], ["created_at", "2018-01-11 21:37:16.189468"], ["updated_at", "2018-01-11 21:37:16.189468"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2018-01-11 13:37:28 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 3083ms (Views: 3081.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/benches?bounds%5BnorthEast%5D%5Blat%5D=37.80788593713507&bounds%5BnorthEast%5D%5Blng%5D=-122.38838165576169&bounds%5BsouthWest%5D%5Blat%5D=37.74004249934129&bounds%5BsouthWest%5D%5Blng%5D=-122.47421234423825&minSeating=1&maxSeating=10" for 127.0.0.1 at 2018-01-11 13:37:34 -0800
+Processing by Api::BenchesController#index as JSON
+  Parameters: {"bounds"=>{"northEast"=>{"lat"=>"37.80788593713507", "lng"=>"-122.38838165576169"}, "southWest"=>{"lat"=>"37.74004249934129", "lng"=>"-122.47421234423825"}}, "minSeating"=>"1", "maxSeating"=>"10"}
+  Rendering api/benches/index.json.jbuilder
+  [1m[36mBench Load (99.0ms)[0m  [1m[34mSELECT "benches".* FROM "benches" WHERE (lat < '37.80788593713507') AND (lat > '37.74004249934129') AND (lng > '-122.47421234423825') AND (lng < '-122.38838165576169') AND ("benches"."seating" BETWEEN $1 AND $2)[0m  [["seating", 1], ["seating", 10]]
+  [1m[36mReview Load (29.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."bench_id" IN (1, 2)[0m
+  [1m[36mFavorite Load (68.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."bench_id" IN (1, 2)[0m
+  [1m[35m (71.0ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."bench_id" = $1[0m  [["bench_id", 1]]
+  Rendered api/benches/_bench.json.jbuilder (81.5ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT AVG("reviews"."rating") FROM "reviews" WHERE "reviews"."bench_id" = $1[0m  [["bench_id", 2]]
+  Rendered api/benches/_bench.json.jbuilder (2.1ms)
+  Rendered api/benches/index.json.jbuilder (380.2ms)
+Completed 200 OK in 426ms (Views: 107.5ms | ActiveRecord: 287.5ms)
+
+
